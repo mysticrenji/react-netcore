@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-netcore
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-netcore
+  template:
+    metadata:
+      labels:
+        app: react-netcore
+    spec:
+      containers:
+      - name: react-netcore
+        image: mysticrenji/react-netcore
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-netcore
+  namespace: default
+spec:
+  ports:
+  - name: http
+    targetPort: 80
+    port: 7000
+  selector:
+    app: react-netcore
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: react-netcore
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+
+spec:
+  rules:
+  - host: underthehood.duckdns.org
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: react-netcore
+          servicePort: 7000
