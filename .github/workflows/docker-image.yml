@@ -22,8 +22,7 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: mysticrenji/react-netcore
-        tag_with_ref: true
-        tag_with_sha: true
+        tags: react-netcore:$(date +%s)
       
 #    - uses: actions/checkout@v2
 #    - name: Build the Docker image
