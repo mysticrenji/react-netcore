@@ -13,6 +13,11 @@ jobs:
     runs-on: self-hosted
 
     steps:
+    - name: Hadolint Action
+      uses: brpaz/hadolint-action@v1.0.2
+      with:
+        dockerfile: Dockerfile
+      
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file **/Dockerfile --tag my-image-name:$(date +%s)
