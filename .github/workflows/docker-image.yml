@@ -15,6 +15,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: k8s-artifact
+        path: ./k8s/k3s-deployement.yaml
 
     - name: Build and push Docker images
       uses: docker/build-push-action@v1
@@ -23,7 +29,3 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: mysticrenji/react-netcore
         tags: latest
-      
-#    - uses: actions/checkout@v2
-#    - name: Build the Docker image
-#      run: docker build . --file **/Dockerfile --tag react-netcore:$(date +%s)
