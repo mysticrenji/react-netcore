@@ -1,2 +1,2 @@
 # react-netcore
-React with .NETCore
+React with .NETCore - Dockerized
