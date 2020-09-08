@@ -29,4 +29,4 @@ jobs:
               echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u $GITHUB_ACTOR --password-stdin
               # new container registry urls added
               docker build . --tag ghcr.io/mysticrenji/react-netcore:$GITHUB_SHA
-              docker push ghcr.io/github/octoshift:$GITHUB_SHA
+              docker push ghcr.io/mysticrenji/react-netcore:$GITHUB_SHA
