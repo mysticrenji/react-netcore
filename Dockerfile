@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1.20-stretch-slim AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2.8-stretch-slim AS base
 
 #RUN apt-get update -yq \
 #    && apt-get install curl gnupg -yq \
